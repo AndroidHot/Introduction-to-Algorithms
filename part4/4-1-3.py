@@ -53,9 +53,9 @@ def violence(array):
 
 
 # 测试
-testArray1 = [-9, -2, -3, -5, -3]
-testArray2 = [0, -2, 3, 5, -1, 2]
-print(find_maximum_subarray(testArray1, 0, len(testArray1) - 1))
-print(violence(testArray1))
-print(find_maximum_subarray(testArray2, 0, len(testArray2) - 1))
-print(violence(testArray2))
+test_array1 = [-9, -2, -3, -5, -3]
+test_array2 = [0, -2, 3, 5, -1, 2]
+print(find_maximum_subarray(test_array1, 0, len(test_array1) - 1))
+print(violence(test_array1))
+print(find_maximum_subarray(test_array2, 0, len(test_array2) - 1))
+print(violence(test_array2))
