@@ -1,4 +1,4 @@
-# 快速排序（升序）
+# 插入排序（升序）
 def ascend_order(array):
     A = array
     for j in range(1, len(A)):
@@ -10,7 +10,7 @@ def ascend_order(array):
         A[i+1] = key
     return A
 
-# 快速排序（降序）
+# 插入排序（降序）
 def descend_order(array):
     A = array
     for j in range(1, len(A)):
