@@ -7,9 +7,7 @@ def partition(A, p, r):
     for j in range(p, r):
         if A[j] <= x:
             i = i + 1
-            temp = A[j]
-            A[j] = A[i]
-            A[i] = temp
+            exchangeElement(A, j, i)
     i = i + 1
     A[r] = A[i]
     A[i] = x
@@ -17,9 +15,7 @@ def partition(A, p, r):
 
 def randomized_partition(A, p, r):
     i = random.randint(p, r)
-    temp = A[r]
-    A[r] = A[i]
-    A[i] = temp
+    exchangeElement(A, r, i)
     return partition(A, p, r)
 
 def randomized_quicksort(A, p, r):
@@ -28,6 +24,11 @@ def randomized_quicksort(A, p, r):
     q = randomized_partition(A, p, r)
     randomized_quicksort(A, p, q - 1)
     randomized_quicksort(A, q + 1, r)
+
+def exchangeElement(Array, indexA, indexB):
+    tempValue =  Array[indexA]
+    Array[indexA] = Array[indexB]
+    Array[indexB] = tempValue
 
 # test
 testArray = [2, 8, 7, 1, 3, 5, 6, 4]
