@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*- 
-# 返回数组 A[p..r] 中第 i 小的元素
+# -*- coding: utf-8 -*-
+# 期望为线性时间的选择算法，返回数组 A[p..r] 中第 i 小的元素(假设输入数据都是互异的)。
 import random
 
 def randomized_select(A, p, r, i):
