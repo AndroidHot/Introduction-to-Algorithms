@@ -1,8 +1,8 @@
 class Stack(object):
-    top = -1
 
-    def __init__(self, n):
-        self.S = [-1 for _ in range(n)]
+    def __init__(self, length):
+        self.S = [None for _ in range(length)]
+        self.top = -1
 
     def stack_empty(self):
         if self.top == -1:
