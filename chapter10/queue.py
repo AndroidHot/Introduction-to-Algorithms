@@ -33,3 +33,6 @@ class Queue(object):
 
     def _isUnderFlow(self):
         return (self.head == self.tail) and (not self.Q[self.head])
+
+    def onlyOneElement(self):
+        return (self.tail - self.head == 1) or (self.tail == 0 and self.head == self.maxIndex)

@@ -1,5 +1,9 @@
-# Exercise 10.1-6
-# Two stacks implement the queue.
+"""
+Exercise 10.1-6
+
+Two stacks implement the queue.
+"""
+
 from stack import Stack
 
 class Queue(object):
