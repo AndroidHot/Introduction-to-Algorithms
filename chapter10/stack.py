@@ -23,20 +23,3 @@ class Stack(object):
         else:
             self.top = self.top - 1
             return self.S[self.top + 1]
-
-
-# test
-s = Stack(5)
-print(s.stack_empty()) # True
-s.push(1)
-s.push(22)
-s.push(333)
-print(s.pop()) # 333
-print(s.pop()) # 22
-s.push(4444)
-s.push(55555)
-print(s.pop()) # 55555
-print(s.pop()) # 4444
-print(s.stack_empty()) # False
-print(s.pop()) # 1
-print(s.stack_empty()) # True
