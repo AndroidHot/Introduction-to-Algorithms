@@ -20,6 +20,15 @@ class SinglyLinkedList(object):
         else:
             previous_node.next = current_node.next
 
+    def delete_head(self):
+        if self.nil.next == self.nil:
+            print('The Linked list have not head.')
+            return None
+        else:
+            result = self.nil.next
+            self.nil.next = result.next
+            return result
+
     def search(self, value):
         result = self.nil.next
         while result != self.nil and result.key != value:
