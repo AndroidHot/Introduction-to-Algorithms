@@ -4,7 +4,7 @@ class Stack(object):
         self.S = [None for _ in range(length)]
         self.top = -1
 
-    def stack_empty(self):
+    def is_empty(self):
         if self.top == -1:
             return True
         else:
@@ -18,7 +18,7 @@ class Stack(object):
             self.S[self.top] = element
 
     def pop(self):
-        if self.stack_empty():
+        if self.is_empty():
             raise IndexError('stack underflow')
         else:
             self.top = self.top - 1

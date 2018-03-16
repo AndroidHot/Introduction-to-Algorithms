@@ -1,24 +1,27 @@
-# Singly linked list
+# Doubly linked list
 
-class SinglyLinkedList(object):
+class DoublyLinkedList(object):
 
     def __init__(self):
-        self.nil = SinglyLinkedListNode(None) # sentinel
+        self.nil = DoublyLinkedListNode(None) # sentinel
+        self.nil.prev = self.nil
         self.nil.next = self.nil
 
     def insert(self, node):
-        if not isinstance(node, SinglyLinkedListNode):
-            raise ValueError('node is not SinglyLinkedListNode, please check!')
+        if not isinstance(node, DoublyLinkedListNode):
+            raise ValueError('node is not DoublyLinkedListNode, please check!')
         node.next = self.nil.next
+        self.nil.next.prev = node
         self.nil.next = node
+        node.prev = self.nil
 
     def delete(self, value):
-        previous_node = self.search_previous_node(value)
-        current_node = self.search(value)
-        if previous_node == None:
+        delete_node = self.search(value)
+        if delete_node == None:
             print('Have not found this node, do not remove any node.')
         else:
-            previous_node.next = current_node.next
+            delete_node.prev.next = delete_node.next
+            delete_node.next.prev = delete_node.prev
 
     def delete_head(self):
         if self.is_empty():
@@ -27,6 +30,7 @@ class SinglyLinkedList(object):
         else:
             result = self.nil.next
             self.nil.next = result.next
+            result.next.prev = self.nil
             return result
 
     def search(self, value):
@@ -35,30 +39,23 @@ class SinglyLinkedList(object):
             result = result.next
         return result if result != self.nil else None
 
-    def search_previous_node(self, value):
-        x = self.nil.next
-        result = self.nil
-        while x != self.nil and x.key != value:
-            result = x
-            x = x.next
-        return result if x != self.nil else None
-
     def is_empty(self):
         return self.nil.next == self.nil
 
     def visual(self):
-        # {self : xxx, key : xxx, next : xxx}
-        visual_text = '{\n self : ' + str(self.nil) + ',\n key : nil'
+        # {prev : xxx, self : xxx, key : xxx, next : xxx}
+        visual_text = '{\n prev : ' + str(self.nil.prev) + ',\n self : ' + str(self.nil) + ',\n key : nil'
         x = self.nil.next
         while x != self.nil:
-            _visual_text = ',\n next : ' + str(x) + '\n}\n->\n{\n self : ' + str(x) +',\n key : ' + str(x.key)
+            _visual_text = ',\n next : ' + str(x) + '\n}\n->\n{\n prev : ' + str(x.prev) + '\n self : ' + str(x) +',\n key : ' + str(x.key)
             visual_text += _visual_text
             x = x.next
         visual_text += (',\n next : ' + str(self.nil) +'\n}')
         return visual_text
 
-class SinglyLinkedListNode(object):
+class DoublyLinkedListNode(object):
 
     def __init__(self, key):
+        self.prev = None
         self.key = key
         self.next = None

@@ -11,11 +11,8 @@ class Stack(object):
     def __init__(self):
         self.S = SinglyLinkedList()
 
-    def stack_empty(self):
-        if self.S.nil.next == self.S.nil:
-            return True
-        else:
-            return False
+    def is_empty(self):
+        return self.S.is_empty()
 
     def push(self, element):
         self.S.insert(SinglyLinkedListNode(element)) # Linked list implementation of stack overflow do not exist

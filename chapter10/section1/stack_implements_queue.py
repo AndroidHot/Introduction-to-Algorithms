@@ -25,6 +25,6 @@ class Queue(object):
             result = self.stack1.pop()
         except IndexError:
             raise IndexError('queue underflow.')
-        while not self.stack2.stack_empty():
+        while not self.stack2.is_empty():
             self.stack1.push(self.stack2.pop())
         return result
