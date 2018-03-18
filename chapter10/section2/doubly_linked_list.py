@@ -33,6 +33,16 @@ class DoublyLinkedList(object):
             result.next.prev = self.nil
             return result
 
+    def delete_tail(self):
+        if self.is_empty():
+            print('The Linked list is empty.')
+            return None
+        else:
+            result = self.nil.prev
+            self.nil.prev = result.prev
+            result.prev.next = self.nil
+            return result
+
     def search(self, value):
         result = self.nil.next
         while result != self.nil and result.key != value:
