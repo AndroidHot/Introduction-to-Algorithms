@@ -14,7 +14,7 @@ The Python implementation of the algorithm in the third edition of "Introduction
 - [x] chapter 8
 - [x] chapter 9
 - [x] chapter 10
-- [x] chapter 11
+- [ ] chapter 11
 - [ ] chapter 12
 - [ ] chapter 13
 - [ ] chapter 14
