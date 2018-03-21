@@ -12,13 +12,14 @@ class SinglyLinkedList(object):
         node.next = self.nil.next
         self.nil.next = node
 
-    def delete(self, value):
-        previous_node = self.search_previous_node(value)
-        current_node = self.search(value)
+    def delete(self, node):
+        if not isinstance(node, SinglyLinkedListNode):
+            raise ValueError('node is not SinglyLinkedListNode, please check!')
+        previous_node = self.search_previous_node(node)
         if previous_node == None:
             print('Have not found this node, do not remove any node.')
         else:
-            previous_node.next = current_node.next
+            previous_node.next = node.next
 
     def delete_head(self):
         if self.is_empty():
@@ -29,16 +30,20 @@ class SinglyLinkedList(object):
             self.nil.next = result.next
             return result
 
-    def search(self, value):
+    def search(self, node):
+        if not isinstance(node, SinglyLinkedListNode):
+            raise ValueError('node is not SinglyLinkedListNode, please check!')
         result = self.nil.next
-        while result != self.nil and result.key != value:
+        while result != self.nil and (result.key != node.key or result.next != node.next):
             result = result.next
         return result if result != self.nil else None
 
-    def search_previous_node(self, value):
+    def search_previous_node(self, node):
+        if not isinstance(node, SinglyLinkedListNode):
+            raise ValueError('node is not SinglyLinkedListNode, please check!')
         x = self.nil.next
         result = self.nil
-        while x != self.nil and x.key != value:
+        while x != self.nil and (x.key != node.key or x.next != node.next):
             result = x
             x = x.next
         return result if x != self.nil else None

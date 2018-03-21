@@ -15,8 +15,10 @@ class DoublyLinkedList(object):
         self.nil.next = node
         node.prev = self.nil
 
-    def delete(self, value):
-        delete_node = self.search(value)
+    def delete(self, node):
+        if not isinstance(node, DoublyLinkedListNode):
+            raise ValueError('node is not DoublyLinkedListNode, please check!')
+        delete_node = self.search(node)
         if delete_node == None:
             print('Have not found this node, do not remove any node.')
         else:
@@ -43,9 +45,11 @@ class DoublyLinkedList(object):
             result.prev.next = self.nil
             return result
 
-    def search(self, value):
+    def search(self, node):
+        if not isinstance(node, DoublyLinkedListNode):
+            raise ValueError('node is not DoublyLinkedListNode, please check!')
         result = self.nil.next
-        while result != self.nil and result.key != value:
+        while result != self.nil and (result.key != node.key or result.prev != node.prev or result.next != node.next):
             result = result.next
         return result if result != self.nil else None
 
