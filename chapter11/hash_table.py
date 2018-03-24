@@ -15,9 +15,7 @@ class HashTable(object):
         self.hash_func_type = hash_func_type
         self.slot_length = slot_length
         self.T = [DoublyLinkedList() for _ in range(slot_length)]
-        self.multiply_random_value = random.random()
-        while self.multiply_random_value == 0:
-            self.multiply_random_value = random.random()
+        self.init_hash_method()
 
     # CHAINED-HASH-INSERT(T, x)
     def insert(self, x):
@@ -41,7 +39,19 @@ class HashTable(object):
         return {
             HashFuncType.Division: self.divide_hash_method(value),
             HashFuncType.Multiplication: self.multiply_hash_method(value),
+            HashFuncType.Universal: self.universal_hash_method(value),
         }[self.hash_func_type]
+
+    def init_hash_method(self):
+        # Multiply hash param.
+        self.multiply_random_value = random.random()
+        while self.multiply_random_value == 0:
+            self.multiply_random_value = random.random()
+
+        # Universal hash param.
+        self.universal_P = 997 # Assuming all the keywords k to fall from 0 to (P - 1)
+        self.universal_a = random.randint(1, self.universal_P - 1)
+        self.universal_b = random.randint(0, self.universal_P - 1)
 
     def divide_hash_method(self, value):
         return value % self.slot_length
@@ -50,7 +60,11 @@ class HashTable(object):
         temp = value * self.multiply_random_value
         return int(math.floor(self.slot_length * (temp - math.floor(temp))))
 
+    def universal_hash_method(self, value):
+        return ((self.universal_a * value + self.universal_b) % self.universal_P) % self.slot_length
+
 @unique
 class HashFuncType(Enum):
     Division = 0
     Multiplication = 1
+    Universal = 2
