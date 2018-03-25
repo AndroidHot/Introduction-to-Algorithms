@@ -1,4 +1,5 @@
 """
+Resolve conflicting hash table by chaining.
 Assume that the given keyword is a natural number. (x.key)
 """
 
@@ -35,13 +36,6 @@ class HashTable(object):
             raise ValueError('node is not DoublyLinkedListNode, please check!')
         self.T[self.cal_hash_value(x.key)].delete(x)
 
-    def cal_hash_value(self, value):
-        return {
-            HashFuncType.Division: self.divide_hash_method(value),
-            HashFuncType.Multiplication: self.multiply_hash_method(value),
-            HashFuncType.Universal: self.universal_hash_method(value),
-        }[self.hash_func_type]
-
     def init_hash_method(self):
         # Multiply hash param.
         self.multiply_random_value = random.random()
@@ -53,6 +47,13 @@ class HashTable(object):
         self.universal_a = random.randint(1, self.universal_P - 1)
         self.universal_b = random.randint(0, self.universal_P - 1)
 
+    def cal_hash_value(self, value):
+        return {
+            HashFuncType.Division: self.divide_hash_method(value),
+            HashFuncType.Multiplication: self.multiply_hash_method(value),
+            HashFuncType.Universal: self.universal_hash_method(value),
+        }[self.hash_func_type]
+
     def divide_hash_method(self, value):
         return value % self.slot_length
 
@@ -62,6 +63,7 @@ class HashTable(object):
 
     def universal_hash_method(self, value):
         return ((self.universal_a * value + self.universal_b) % self.universal_P) % self.slot_length
+
 
 @unique
 class HashFuncType(Enum):
