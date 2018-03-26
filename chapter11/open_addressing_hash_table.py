@@ -1,6 +1,7 @@
 """
 Resolve conflicting hash table by open addressing.
 Assume that the given keyword is a natural number. (x.key)
+In applications where keywords must be removed, the more common practice is to use chaining to resolve conflicts.
 """
 
 from enum import Enum, unique
@@ -19,7 +20,7 @@ class HashTable(object):
         i = 0
         while i != self.slot_length:
             j = self.cal_hash_value(k, i)
-            if self.T[j] == None:
+            if self.T[j] == None or self.T[j] == 'DELETED':
                 self.T[j] = k
                 return j
             else:
@@ -36,6 +37,12 @@ class HashTable(object):
                 return j
             i += 1
         return None
+
+    # HASH-DELETE(T, k)
+    def delete(self, k):
+        j = self.search(k)
+        if j:
+            self.T[j] = 'DELETED'
 
     def init_probe_param(self):
         # Quadratic probing  param.
