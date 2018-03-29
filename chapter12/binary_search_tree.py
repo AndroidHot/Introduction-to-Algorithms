@@ -32,6 +32,32 @@ class BinarySearchTree(object):
         else:
             y.right = node
 
+    def tree_delete(self, node):
+        if node.left == None:
+            self.transplant(node.right, node)
+        elif node.right == None:
+            self.transplant(node.left, node)
+        else:
+            node_successor = self.tree_minimum(node.right)
+            if node_successor.parent != node:
+                self.transplant(node_successor.right, node_successor)
+                node_successor.right = node.right
+                node_successor.right.parent = node_successor
+            self.transplant(node_successor, node)
+            node_successor.left = node.left
+            node_successor.left.parent = node_successor
+
+
+    def transplant(self, from_node, into_node):
+        if into_node.parent == None:
+            self.root_node = from_node
+        elif into_node == into_node.parent.left:
+            into_node.parent.left = from_node
+        else:
+            into_node.parent.right = from_node
+        if from_node != None:
+            from_node.parent = into_node.parent
+
     def tree_search(self, node, value):
         if node == None or value == node.key:
             return node
