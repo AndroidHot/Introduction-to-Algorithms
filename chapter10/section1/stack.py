@@ -21,5 +21,7 @@ class Stack(object):
         if self.is_empty():
             raise IndexError('stack underflow')
         else:
+            result = self.S[self.top]
+            self.S[self.top] = None
             self.top = self.top - 1
-            return self.S[self.top + 1]
+            return result
