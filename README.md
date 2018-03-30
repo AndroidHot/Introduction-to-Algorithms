@@ -17,7 +17,7 @@ The Python implementation of the algorithm in the third edition of "Introduction
 - [x] chapter 10 **基本数据结构**
 - [x] chapter 11 **散列表**
 - [x] chapter 12 **二叉搜索树**
-- [ ] chapter 13 **红黑树** :bicyclist: :mountain_bicyclist: :bicyclist:
+- [ ] chapter 13 **红黑树** :bicyclist: :bicyclist: :bicyclist:
 - [ ] chapter 14 **数据结构的扩张**
 ### 第四部分 高级设计和分析技术
 - [ ] chapter 15 **动态规划**
@@ -29,7 +29,7 @@ The Python implementation of the algorithm in the third edition of "Introduction
 - [ ] chapter 20 **van Emde Boas 树**
 - [ ] chapter 21 **用于不相交集合的数据结构**
 ### 第六部分 图算法
-- [ ] chapter 22 **基本的图算法**
+- [ ] chapter 22 **基本的图算法**
 - [ ] chapter 23 **最小生成树**
 - [ ] chapter 24 **单源最短路径**
 - [ ] chapter 25 **所有结点对的最短路径问题**
