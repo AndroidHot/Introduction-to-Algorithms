@@ -8,7 +8,9 @@ from stack import Stack
 
 class BinarySearchTree(object):
 
-    _inorder_walk_result = []
+    _inorder_result = []
+    _preorder_result = []
+    _postorder_result = []
 
     def __init__(self, root_node = None):
         if root_node != None and not isinstance(root_node, BinarySearchTreeNode):
@@ -110,9 +112,9 @@ class BinarySearchTree(object):
     def inorder_tree_walk(self, node):
         if node != None:
             self.inorder_tree_walk(node.left)
-            self._inorder_walk_result.append(node.key)
+            self._inorder_result.append(node.key)
             self.inorder_tree_walk(node.right)
-        return self._inorder_walk_result
+        return self._inorder_result
 
     def inorder_non_recursive(self, node):
         def push_nodes_to_stack(stack, node):
@@ -120,21 +122,29 @@ class BinarySearchTree(object):
                 stack.push(node)
                 node = node.left
         stack = Stack(len(self.inorder_tree_walk(self.root_node))) # param length can be easier to assign
-        self._inorder_walk_result = []
+        self._inorder_result = []
         stack.push(node)
         push_nodes_to_stack(stack, node.left)
         while not stack.is_empty():
             pop_temp = stack.pop()
-            self._inorder_walk_result.append(pop_temp.key)
+            self._inorder_result.append(pop_temp.key)
             if pop_temp.right:
                 push_nodes_to_stack(stack, pop_temp.right)
-        return self._inorder_walk_result
+        return self._inorder_result
 
     def preorder_tree_walk(self, node):
-        pass
+        if node != None:
+            self._preorder_result.append(node.key)
+            self.preorder_tree_walk(node.left)
+            self.preorder_tree_walk(node.right)
+        return self._preorder_result
 
     def postorder_tree_walk(self, node):
-        pass
+        if node != None:
+            self.postorder_tree_walk(node.left)
+            self.postorder_tree_walk(node.right)
+            self._postorder_result.append(node.key)
+        return self._postorder_result
 
 
 class BinarySearchTreeNode(object):
