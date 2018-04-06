@@ -17,8 +17,8 @@ The Python implementation of the algorithm in the third edition of "Introduction
 - [x] chapter 10 **基本数据结构**
 - [x] chapter 11 **散列表**
 - [x] chapter 12 **二叉搜索树**
-- [ ] chapter 13 **红黑树** :bicyclist: :bicyclist: :bicyclist:
-- [ ] chapter 14 **数据结构的扩张**
+- [x] chapter 13 **红黑树**
+- [ ] chapter 14 **数据结构的扩张** :bicyclist: :bicyclist: :bicyclist:
 ### 第四部分 高级设计和分析技术
 - [ ] chapter 15 **动态规划**
 - [ ] chapter 16 **贪心算法**
