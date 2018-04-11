@@ -28,9 +28,21 @@ def print_optimal_parens(s, i, j):
         print_optimal_parens(s, int(s[i][j]), j)
         print(')', end='')
 
+# Exercise 15.2-2
+def matrix_chain_multiply(arrays, s, i, j):
+    if i == j:
+        return arrays[i]
+    else:
+        A1 = matrix_chain_multiply(arrays, s, i, int(s[i][j] - 1))
+        A2 = matrix_chain_multiply(arrays, s, int(s[i][j]), j)
+        return np.dot(A1, A2)
+
 if __name__ == '__main__':
-    p = [30, 35, 15, 5, 10, 20, 25]
+    p = [5, 10, 3, 12, 5, 50, 6]
     m, s = matrix_chain_order(p)
     print(m)
     print(s)
     print_optimal_parens(s, 0, 5)
+    print()
+    arrays = [np.ones((5, 10)), np.ones((10, 3)), np.ones((3, 12)), np.ones((12, 5)), np.ones((5, 50)), np.ones((50, 6))]
+    print(matrix_chain_multiply(arrays, s, 0, 5))
