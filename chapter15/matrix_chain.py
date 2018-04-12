@@ -4,6 +4,27 @@ Matrix chain multiplication
 
 import numpy as np
 
+INF = float('Inf')
+
+# method 1: top-down with memoization
+def memoized_matrix_chain(p):
+    n = len(p) - 1
+    m = np.full((n, n), INF)
+    return lookup_chain(m, p, 0, n - 1)
+
+def lookup_chain(m, p, i, j):
+    if m[i][j] < INF:
+        return m[i][j]
+    if i == j:
+        m[i][j] = 0
+    else:
+        for k in range(i, j):
+            q = lookup_chain(m, p, i, k) + lookup_chain(m, p, k + 1, j) + p[i] * p[k+1] * p[j+1]
+            if q < m[i][j]:
+                m[i][j] = q
+    return m[i][j]
+
+# method 2: bottom-up method
 def matrix_chain_order(p):
     n = len(p) - 1
     m = np.zeros((n, n)) # m save optimal value
