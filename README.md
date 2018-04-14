@@ -20,8 +20,8 @@ The Python implementation of the algorithm in the third edition of "Introduction
 - [x] chapter 13 **红黑树**
 - [x] chapter 14 **数据结构的扩张**
 ### 第四部分 高级设计和分析技术
-- [ ] chapter 15 **动态规划** :bicyclist: :bicyclist: :bicyclist:
-- [ ] chapter 16 **贪心算法**
+- [x] chapter 15 **动态规划**
+- [ ] chapter 16 **贪心算法** :bicyclist: :bicyclist: :bicyclist:
 - [ ] chapter 17 **摊还分析**
 ### 第五部分 高级数据结构
 - [ ] chapter 18 **B树**
