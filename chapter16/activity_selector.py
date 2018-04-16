@@ -26,6 +26,17 @@ def greedy_activity_selector(s, f):
             k = j
     return A
 
+# Exercise 16.1-2
+# Assume that the input activity has been ordered by the start of time
+def greedy_activity_selector_exercise(s, f):
+    end_index = len(f) - 1
+    A = [end_index]
+    k = end_index
+    for j in range(end_index, -1, -1):
+        if f[j] <= s[k]:
+            A.append(j)
+            k = j
+    return A
 
 if __name__ == '__main__':
     i = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -34,3 +45,8 @@ if __name__ == '__main__':
     # The expected results: 0, 3, 7, 10
     print(greedy_activity_selector(start_time, end_time))
     recursive_activity_selector(start_time, end_time, -1, len(i) - 1)
+
+    # Exercise 16.1-2, the expected results: 10, 9, 5, 3
+    start_time = [0, 1, 2, 3, 3, 5, 5, 6, 8, 8, 12]
+    end_time = [6, 4, 14, 5, 9, 7, 9, 10, 11, 12, 16]
+    print(greedy_activity_selector_exercise(start_time, end_time))
