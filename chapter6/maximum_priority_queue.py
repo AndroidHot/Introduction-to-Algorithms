@@ -1,12 +1,13 @@
 """
-Biggest Priority Queue.
+Maximum Priority Queue.
 """
 import math
 
-class BiggestPriorityQueue():
+class MaximumPriorityQueue(object):
 
     def __init__(self, A):
         self.A = A
+        self.__build_max_heap()
 
     def maximum(self):
         return self.A[0]
