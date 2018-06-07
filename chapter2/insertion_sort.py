@@ -22,5 +22,6 @@ def descend_order(array):
         A[i+1] = key
     return A
 
-print(ascend_order([2, 1, 4, 3, 6, 5]))
-print(descend_order([2, 1, 4, 3, 6, 5]))
+if __name__ == '__main__':
+    print(ascend_order([2, 1, 4, 3, 6, 5]))
+    print(descend_order([2, 1, 4, 3, 6, 5]))
