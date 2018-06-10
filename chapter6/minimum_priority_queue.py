@@ -14,7 +14,7 @@ class MinimumPriorityQueue(object):
 
     def extract_min(self):
         min = self.A[0]
-        self.__exchangeElement(self.A, 0, len(self.A) - 1)
+        self.A[len(self.A) - 1], self.A[0] = self.A[0], self.A[len(self.A) - 1]
         self.A = self.A[:len(self.A) - 1]
         self.__min_heapify(0)
         return min
@@ -24,7 +24,7 @@ class MinimumPriorityQueue(object):
             raise ValueError('new key is bigger than current key.')
         self.A[i] = key
         while i > 0 and self.A[self.__parent_node(i)] > self.A[i]:
-            self.__exchangeElement(self.A, i, self.__parent_node(i))
+            self.A[self.__parent_node(i)], self.A[0] = self.A[0], self.A[self.__parent_node(i)]
             i = self.__parent_node(i)
 
     def insert(self, key):
@@ -61,15 +61,10 @@ class MinimumPriorityQueue(object):
         if r and self.A[r] <= self.A[smallest]:
             smallest = r
         if smallest != i:
-            self.__exchangeElement(self.A, i, smallest)
+            self.A[smallest], self.A[i] = self.A[i], self.A[smallest]
             if smallest <= len(self.A) / 2:
                 self.__min_heapify(smallest)
 
     def __build_min_heap(self):
         for i in range(math.floor(len(self.A) / 2) - 1, -1, -1):
             self.__min_heapify(i)
-
-    def __exchangeElement(self, Array, indexA, indexB):
-        tempValue =  Array[indexA]
-        Array[indexA] = Array[indexB]
-        Array[indexB] = tempValue

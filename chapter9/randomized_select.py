@@ -20,7 +20,7 @@ def partition(A, p, r):
     for j in range(p, r):
         if A[j] <= x:
             i = i + 1
-            exchangeElement(A, j, i)
+            A[i], A[j] = A[j], A[i]
     i = i + 1
     A[r] = A[i]
     A[i] = x
@@ -28,13 +28,10 @@ def partition(A, p, r):
 
 def randomized_partition(A, p, r):
     i = random.randint(p, r)
-    exchangeElement(A, r, i)
+    A[i], A[r] = A[r], A[i]
     return partition(A, p, r)
 
-def exchangeElement(Array, indexA, indexB):
-    tempValue =  Array[indexA]
-    Array[indexA] = Array[indexB]
-    Array[indexB] = tempValue
 
-testArray = [3, 2, 9, 0, 7, 5, 4, 8, 6, 1]
-print(2 == randomized_select(testArray, 0, len(testArray) - 1, 3))
+if __name__ == '__main__':
+    array = [3, 2, 9, 0, 7, 5, 4, 8, 6, 1]
+    print(2 == randomized_select(array, 0, len(array) - 1, 3))

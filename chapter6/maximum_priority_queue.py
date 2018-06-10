@@ -14,7 +14,7 @@ class MaximumPriorityQueue(object):
 
     def extract_max(self):
         max = self.A[0]
-        self.__exchangeElement(self.A, 0, len(self.A) - 1)
+        self.A[len(self.A) - 1], self.A[0] = self.A[0], self.A[len(self.A) - 1]
         self.A = self.A[:len(self.A) - 1]
         self.__max_heapify(0)
         return max
@@ -24,7 +24,7 @@ class MaximumPriorityQueue(object):
             raise ValueError('new key is smaller than current key.')
         self.A[i] = key
         while i > 0 and self.A[self.__parent_node(i)] < self.A[i]:
-            self.__exchangeElement(self.A, i, self.__parent_node(i))
+            self.A[self.__parent_node(i)], self.A[i] = self.A[i], self.A[self.__parent_node(i)]
             i = self.__parent_node(i)
 
     def insert(self, key):
@@ -64,15 +64,10 @@ class MaximumPriorityQueue(object):
         if r and self.A[r] >= self.A[largest]:
             largest = r
         if largest != i:
-            self.__exchangeElement(self.A, i, largest)
+            self.A[i], self.A[largest] = self.A[largest], self.A[i]
             if largest <= len(self.A) / 2:
                 self.__max_heapify(largest)
 
     def __build_max_heap(self):
         for i in range(math.floor(len(self.A) / 2) - 1, -1, -1):
             self.__max_heapify(i)
-
-    def __exchangeElement(self, Array, indexA, indexB):
-        tempValue =  Array[indexA]
-        Array[indexA] = Array[indexB]
-        Array[indexB] = tempValue

@@ -6,7 +6,7 @@ def partition(A, p, r):
         # Just need to change this line.
         if A[j] >= x:
             i = i + 1
-            exchangeElement(A, j, i)
+            A[i], A[j] = A[j], A[i]
     i = i + 1
     A[r] = A[i]
     A[i] = x
@@ -19,13 +19,9 @@ def quicksort(A, p, r):
     quicksort(A, p, q - 1)
     quicksort(A, q + 1, r)
 
-def exchangeElement(Array, indexA, indexB):
-    tempValue =  Array[indexA]
-    Array[indexA] = Array[indexB]
-    Array[indexB] = tempValue
 
-# test
-testArray = [2, 8, 7, 1, 3, 5, 6, 4]
-testArray2 = [13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11]
-quicksort(testArray2, 0, len(testArray2) - 1)
-print(testArray2)
+if __name__ == '__main__':
+    # array = [2, 8, 7, 1, 3, 5, 6, 4]
+    array = [13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11]
+    quicksort(array, 0, len(array) - 1)
+    print(array)

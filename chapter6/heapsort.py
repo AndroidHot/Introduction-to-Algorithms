@@ -33,7 +33,7 @@ def max_heapify(A, i):
     if r and A[r] >= A[largest]:
         largest = r
     if largest != i:
-        exchangeElement(A, i, largest)
+        A[i], A[largest] = A[largest], A[i]
         if largest <= len(A) / 2:
             max_heapify(A, largest)
 
@@ -47,7 +47,7 @@ def min_heapify(A, i):
     if r and A[r] <= A[smallest]:
         smallest = r
     if smallest != i:
-        exchangeElement(A, i, smallest)
+        A[i], A[smallest] = A[smallest], A[i]
         if smallest <= len(A) / 2:
             min_heapify(A, smallest)
 
@@ -64,7 +64,7 @@ def heapsort(A):
     B = []
     for i in range(len(A) - 1, 0, -1):
         value = A[0]
-        exchangeElement(A, 0, i)
+        A[i], A[0] = A[0], A[i]
         A = A[:i]
         B.append(value)
         max_heapify(A, 0)
@@ -72,15 +72,10 @@ def heapsort(A):
     B.reverse()
     return B
 
-def exchangeElement(Array, indexA, indexB):
-    tempValue =  Array[indexA]
-    Array[indexA] = Array[indexB]
-    Array[indexB] = tempValue
 
-# test
-testArray1 = [4, 1, 3, 2, 16, 9, 10, 14, 8, 7]
-testArray2 = [5, 13, 2, 25, 7, 17, 20, 8, 4]
+if __name__ == '__main__':
+    array1 = [4, 1, 3, 2, 16, 9, 10, 14, 8, 7]
+    array2 = [5, 13, 2, 25, 7, 17, 20, 8, 4]
 
-result = heapsort(testArray2)
-
-print(result)
+    result = heapsort(array2)
+    print(result)
